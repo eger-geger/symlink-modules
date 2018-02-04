@@ -13,13 +13,8 @@ const args = minimist(process.argv.slice(2), {
     default: { 'linksDirectory': 'linked_modules' }
 })
 
-if(args.help){
+if (args.help) {
     return console.log(usage);
 }
 
-try{
-    link(args._, args.dir);
-} catch(error){
-    console.error(error.stack);
-    console.log(usage);
-}
+link(args._, args);
