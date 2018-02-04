@@ -1,10 +1,10 @@
 {
-  "name": "symlink-modules",
-  "version": "0.2.0",
-  "description": "Symlink module dependencies to ensure a consistent path to access the modules",
+  "name": "linkpkg",
+  "version": "1.0.0-alpha",
+  "description": "Symlink package dependencies within given folder",
   "main": "index.js",
   "bin": {
-    "symlink-modules": "cli.js"
+    "linkpkg": "cli.js"
   },
   "scripts": {},
   "keywords": [
@@ -13,21 +13,21 @@
     "node_modules",
     "linked_modules"
   ],
-  "author": "Adrian Sieber",
+  "author": "Ivan Mihaylovskyy",
   "license": "MIT",
   "dependencies": {
     "is-windows": "^1.0.1",
     "minimist": "^1.2.0",
     "resolve-pkg": "^1.0.0",
-    "rimraf": "^2.5.0"
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adius/symlink-modules.git"
+    "url": "git+https://github.com/eger-geger/symlink-modules.git"
   },
   "bugs": {
-    "url": "https://github.com/adius/symlink-modules/issues"
+    "url": "https://github.com/eger-geger/symlink-modules/issues"
   },
-  "homepage": "https://github.com/adius/symlink-modules#readme"
+  "homepage": "https://github.com/eger-geger/symlink-modules#readme"
 }
