@@ -31,6 +31,6 @@ try {
 
 function printpkg(pkg) {
     if (pkg && pkg.name && pkg.path && pkg.link) {
-        console.log(`${pkg.name}: ${pkg.path} -> ${pkg.link}`);
+        console.log(`linked ${pkg.name}: ${pkg.path} -> ${pkg.link}`);
     }
 }
