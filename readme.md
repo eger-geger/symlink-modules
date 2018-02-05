@@ -19,7 +19,7 @@ Packages with frontend code often contain resources in addition to javascript co
 		"minimist": "^1.2.0",
 		"rimraf": "^2.6.2",
 		"linkpkg": "^1.0.0"
-	}
+	},
 
 	"scripts": {
 		"postinstall": "linkpkg -d resources minimist rimraf"
