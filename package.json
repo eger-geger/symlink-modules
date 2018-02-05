@@ -1,7 +1,7 @@
 {
   "name": "linkpkg",
   "version": "1.0.0-alpha",
-  "description": "Symlink package dependencies within given folder",
+  "description": "Link package dependencies within given folder",
   "main": "index.js",
   "bin": {
     "linkpkg": "cli.js"
@@ -29,5 +29,5 @@
   "bugs": {
     "url": "https://github.com/eger-geger/symlink-modules/issues"
   },
-  "homepage": "https://github.com/eger-geger/symlink-modules#readme"
+  "homepage": "https://github.com/eger-geger/symlink-modules"
 }

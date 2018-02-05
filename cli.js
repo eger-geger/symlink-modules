@@ -1,20 +1,29 @@
 #! /usr/bin/env node
 'use strict'
-
+const process = require('process');
 const minimist = require('minimist');
 const linkpkg = require('./index.js');
 
-const usage = 'linkpkg [(-d|--dir|--folder) FOLDER] [PKG ...]';
+const usage = [
+    'linkpkg [(-d|--dir) FOLDER] [(-r|--root) ROOT] [PKG ...]',
+    '',
+    'Arguments:',
+    '   PKG            list of packages to link separated with space',
+    '   -d, --dir      path to linked packages folder (default: linked_modules)',
+    `   -r, --root     path used as staring point for package resolution (default: ${process.cwd()})`,
+].join('\n');
 
 const args = minimist(process.argv.slice(2), {
     boolean: ['help'],
-    string: ['folder'],
+    string: ['dir', 'root'],
     alias: {
-        'folder': ['d', 'dir'],
+        'dir': 'd',
+        'root': 'r',
         'help': 'h'
     },
     default: {
-        'folder': 'linked_modules'
+        'dir': 'linked_modules',
+        'root': process.cwd()
     }
 })
 
@@ -23,7 +32,7 @@ if (args.help) {
 }
 
 try {
-    linkpkg(args._, args.folder).forEach(printpkg);
+    linkpkg(args._, args.root, args.dir).forEach(printpkg);
 } catch (err) {
     console.error(err);
     console.log(usage);

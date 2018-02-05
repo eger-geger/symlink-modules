@@ -35,6 +35,15 @@ npm install --save linkpkg
 
 ## Usage
 
+```
+linkpkg [(-d|--dir) FOLDER] [(-r|--root) ROOT] [PKG ...]
+
+Arguments:
+   PKG            list of packages to link separated with space
+   -d, --dir      path to linked packages folder (default: linked_modules)
+   -r, --root     path used as staring point for package resolution (default: current working directory)
+```
+
 Create a `my_modules` folder and symlink installed `minimist` and `rimraf` pckages there:
 ```sh
 linkpkg -d my_modules minimist rimraf
