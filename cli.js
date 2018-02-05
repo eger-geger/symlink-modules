@@ -31,12 +31,7 @@ if (args.help) {
     return console.log(usage);
 }
 
-try {
-    linkpkg(args._, args.root, args.dir).forEach(printpkg);
-} catch (err) {
-    console.error(err);
-    console.log(usage);
-}
+linkpkg(args._, args.root, args.dir).forEach(printpkg);
 
 function printpkg(pkg) {
     if (pkg && pkg.name && pkg.path && pkg.link) {
