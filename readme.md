@@ -1,55 +1,48 @@
-# Symlink Modules
+# linkpkg
+Fork of [symlink-modules](https://github.com/adius/symlink-modules). 
+Purpose remained the same – create symbolic links to resolved packages in given folder. 
 
-Since npm version 3.0.0 npm tries to install the dependency tree
-maximally flat. (https://github.com/npm/npm/releases/tag/v3.0.0)
+Compared to original version following was changed:
+* create directory junction on windows;
+* extended command-line interface;
+* added input validation;
+* added resolution root argument.
 
-This means it is not possible to know in advance
-where the module directory will be on the disk.
-Therefore statically loading files from a module directory
-can not be safely used anymore.
+## Motivation
+Packages with frontend code often contain resources in addition to javascript code. Those resources are usually being referenced via relative path and everything works fine until we do not install package which references resources from other packages as dependency. At that point `npm` flatterns dependency tree and resources are no longer where they used to be. 
 
-Symlink-modules let's you symlink your dependencies
-to a consistent location so that the files can be loaded from there.
+`linkpkg` resolves referenced packages and creates symbolic links for them in predictable location. Sugested usage is linkink referenced packages in `postinstall` phase:
 
+```json
+{
+	...
 
-## Installation
+	"dependencies": {
+		"minimist": "^1.2.0",
+		"rimraf": "^2.6.2",
+		"linkpkg": "^1.0.0"
+	}
 
-```sh
-npm install --save symlink-modules
+	...
+
+	"scripts": {
+		...
+		"postinstall": "linkpkg -d resources minimist rimraf"
+		...
+	}
+
+	...
+}
 ```
 
+## Installation
+```sh
+npm install --save linkpkg
+```
 
 ## Usage
 
-### Command Line
-
+Create a `my_modules` folder and symlink installed `minimist` and `rimraf` pckages there:
 ```sh
-symlink-modules <dependency-1> <dependency-2>
-```
-
-This will create a `linked_modules` directory
-and symlink the specified dependencies.
-
-
-### Javascript
-
-```js
-const symlinkModules = require('symlink-modules')
-
-symlinkModules('dependency-1')
-
-// or
-
-symlinkModules(
-	['dependency-2', 'dependency-3'],
-	options
-)
-```
-
-Possible options:
-
-```js
-{
-	linksDirectory: '<path>' // default: linked_modules
-}
+linkpkg -d my_modules minimist rimraf
 ```
